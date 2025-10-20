@@ -219,11 +219,41 @@ export default component$(() => {
               type="button"
               role="gridcell"
               class="cell"
-              aria-label={`Cell ${i + 1}, ${cell ?? "empty"}`}
+              aria-label={`Cell ${i + 1}, ${cell ? (cell === "X" ? "Knight" : "Queen") : "empty"}`}
               aria-disabled={state.over || !!cell}
               onClick$={() => handleCellClick(i)}
             >
-              {cell ?? ""}
+              {cell === "X" ? (
+                // Knight icon (represents previous "X")
+                <svg
+                  class="icon piece-x"
+                  viewBox="0 0 24 24"
+                  role="img"
+                  aria-label="Knight"
+                >
+                  <title>Knight</title>
+                  <path
+                    d="M6 19h12v-2h-1v-3.5c0-.8-.3-1.6-.9-2.2l-2.6-2.6c-.3-.3-.5-.7-.5-1.1V6h.5c.8 0 1.5.7 1.5 1.5V9h2V7.5C17 5.6 15.4 4 13.5 4H11c-.6 0-1 .4-1 1v1.6c0 .7.3 1.4.8 1.9l.9.9c.2.2.3.5.3.8v.3l-2.4-1.2c-.3-.1-.6 0-.8.2l-2 2c-.2.2-.3.5-.2.8l.7 1.8c.1.2.1.5 0 .7l-.7 1.4V17H6v2z"
+                    fill="currentColor"
+                  />
+                </svg>
+              ) : cell === "O" ? (
+                // Queen icon (represents previous "O")
+                <svg
+                  class="icon piece-o"
+                  viewBox="0 0 24 24"
+                  role="img"
+                  aria-label="Queen"
+                >
+                  <title>Queen</title>
+                  <path
+                    d="M7 21h10c.6 0 1-.4 1-1v-1.1c0-.3-.1-.6-.3-.8l-2.8-3.1c1.3-.6 2.2-1.9 2.2-3.4V7.5l1 .5 1-2-2-.9-1 .4-1-1.5-2 1 .5 1.4L12 6l-1.6-.6.5-1.4-2-1-1 1.5-1-.4-2 .9 1 2 1-.5V11c0 1.5.9 2.8 2.2 3.4L6.3 18c-.2.2-.3.5-.3.8V20c0 .6.4 1 1 1z"
+                    fill="currentColor"
+                  />
+                </svg>
+              ) : (
+                ""
+              )}
             </button>
           ))}
         </div>

@@ -137,6 +137,28 @@ body {
   background: #e9f0ff;
 }
 
+/* Icon styling for chess pieces */
+.icon {
+  width: clamp(28px, 8vw, 40px);
+  height: clamp(28px, 8vw, 40px);
+  display: block;
+  filter: drop-shadow(0 1px 0 rgba(17, 24, 39, 0.04));
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+.piece-x {
+  color: var(--color-primary);
+}
+
+.piece-o {
+  color: var(--color-secondary);
+}
+
+.cell:hover .icon {
+  transform: translateY(-1px) scale(1.02);
+  filter: drop-shadow(0 2px 2px rgba(17, 24, 39, 0.08));
+}
+
 .cell:active {
   transform: translateY(0);
 }
